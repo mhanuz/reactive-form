@@ -1,0 +1,231 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h1>Customer Information </h1>
+      <p style="color: brown;">Basic Information</p>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div formGroupName= 'basicInfo'>
+        <div class="form-group">
+          <label for = "firstname"> First Name </label>
+          <input type="text" 
+          class="form-control"
+          id="firstname"
+          formControlName="firstname"
+          >
+          <!-- ? is used to check is the value null -->
+          <span class="help-block" *ngIf="signupForm.controls.basicInfo.controls.firstname.invalid && (signupForm.controls.basicInfo.controls.firstname.dirty || signupForm.controls.basicInfo.controls.firstname.touched)">
+          <span *ngIf="signupForm.controls.basicInfo.controls.firstname.errors?.required">Name is required</span>
+          <span *ngIf="signupForm.controls.basicInfo.controls.firstname.errors?.NameNotAllowed">Name Maximum Length is 10</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text"
+          class="form-control"
+          id="lastname"
+          formControlName="lastname"
+          >
+          <span class="help-block" *ngIf="signupForm.controls.basicInfo.controls.lastname.invalid && (signupForm.controls.basicInfo.controls.lastname.dirty || signupForm.controls.basicInfo.controls.lastname.touched)">
+            <span *ngIf="signupForm.controls.basicInfo.controls.lastname.errors?.required">Name is required</span>
+            <span *ngIf="signupForm.controls.basicInfo.controls.lastname.errors?.NameNotAllowed">Name Maximum Length is 10</span>
+            </span>
+        </div>
+         <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            >
+            <span 
+              *ngIf="signupForm.controls.basicInfo.controls.email.errors"
+              class="help-block2" style="color: red;">Please Enter a valid email </span>
+         </div>
+         <div class="form-group">
+            <label for="phone">Phone No</label>
+            <input type="text"
+            id="phone"
+            class="form-control"
+            formControlName="phone">
+            <span class="help-block" *ngIf="signupForm.controls.basicInfo.controls.phone.invalid && (signupForm.controls. basicInfo.controls.phone.dirty || signupForm.controls.basicInfo.controls.phone.touched)">
+              <span class="help-block" *ngIf="signupForm.controls.basicInfo.controls.phone.errors?.required">required field</span>
+              <span class="help-block" *ngIf="signupForm.controls.basicInfo.controls.phone.errors?.NotElevenDigit">
+                enter exact 11 digit
+              </span>
+            </span>
+         </div>
+      </div>
+        <p style="color: brown;">Primary Address</p>
+      <div formGroupName="primaryAddress">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"
+          [checked]="primaryAddressCheckBoxValue"
+          (click)="copyBasicInfoIntoPrimaryAddress()"
+          value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            if email and phone no are same
+          </label>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            >
+            <span 
+              *ngIf="signupForm.controls.primaryAddress.controls.email.errors"
+              class="help-block2" style="color: red;">Please Enter a valid email </span>
+         </div>
+            <div class="form-group">
+              <label for="phone">Phone No</label>
+              <input type="number"
+              id="phone"
+              class="form-control"
+              formControlName="phone">
+              <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.phone.invalid && (signupForm.controls.primaryAddress.controls.phone.dirty || signupForm.controls.primaryAddress.controls.phone.touched)">
+                <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.phone.errors?.required">required field</span>
+                <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.phone.errors?.NotaDigit">
+                  enter digit
+                </span>
+              </span>
+          </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text"
+                id="address"
+                class="form-control"
+                formControlName="address">
+                <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.address.invalid &&
+                (signupForm.controls.primaryAddress.controls.address.dirty || signupForm.controls.primaryAddress.controls.address.touched)">required
+                </span>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text"
+              id="city"
+              class="form-control"
+              formControlName="city">
+              <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.city.invalid &&
+                (signupForm.controls.primaryAddress.controls.city.dirty || signupForm.controls.primaryAddress.controls.city.touched)">required
+                </span>
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text"
+            id="country"
+            class="form-control"
+            formControlName="country">
+            <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.country.invalid &&
+                (signupForm.controls.primaryAddress.controls.country.dirty || signupForm.controls.primaryAddress.controls.country.touched)">required
+                </span>
+        </div>
+        <div class="form-group">
+          <label for="postcode">Post Code</label>
+          <input type="number"
+          id="postcode"
+          class="form-control"
+          formControlName="postcode">
+          <span class="help-block" *ngIf="signupForm.controls.primaryAddress.controls.postcode.invalid &&
+                (signupForm.controls.primaryAddress.controls.postcode.dirty || signupForm.controls.primaryAddress.controls.postcode.touched)">required
+                </span>
+        </div>
+      </div>
+
+      <p style="color: brown;">Secondary Address</p>
+      <div formGroupName="secondaryAddress">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"
+          [checked]="secondaryAddressCheckBoxValue"
+          (click)='copyPrimaryAddessIntoSecondaryAddress()'
+          value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            if primary and secondary are same
+          </label>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            >
+            <span 
+              *ngIf="signupForm.controls.secondaryAddress.controls.email.errors"
+              class="help-block2" style="color: red;">Please Enter a valid email </span>
+         </div>
+                <div class="form-group">
+                  <label for="phone">Phone No</label>
+                  <input type="number"
+                  id="phone"
+                  class="form-control"
+                  formControlName="phone">
+                  <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.phone.invalid && (signupForm.controls.secondaryAddress.controls.phone.dirty || signupForm.controls.secondaryAddress.controls.phone.touched)">
+                    <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.phone.errors?.required">required field</span>
+                    <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.phone.errors?.NotElevenDigit">
+                      enter exact 11 digit
+                    </span>
+                  </span>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text"
+                id="address"
+                class="form-control"
+                formControlName="address">
+                <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.address.invalid &&
+                (signupForm.controls.secondaryAddress.controls.address.dirty || signupForm.controls.secondaryAddress.controls.address.touched)">required
+                </span>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text"
+              id="city"
+              class="form-control"
+              formControlName="city">
+              <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.city.invalid &&
+                (signupForm.controls.secondaryAddress.controls.city.dirty || signupForm.controls.secondaryAddress.controls.city.touched)">required
+                </span>
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text"
+            id="country"
+            class="form-control"
+            formControlName="country">
+            <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.country.invalid &&
+                (signupForm.controls.secondaryAddress.controls.country.dirty || signupForm.controls.secondaryAddress.controls.country.touched)">required
+                </span>
+        </div>
+        <div class="form-group">
+          <label for="postcode">Post Code</label>
+          <input type="number"
+          id="postcode"
+          class="form-control"
+          formControlName="postcode">
+          <span class="help-block" *ngIf="signupForm.controls.secondaryAddress.controls.postcode.invalid &&
+                (signupForm.controls.secondaryAddress.controls.postcode.dirty || signupForm.controls.secondaryAddress.controls.postcode.touched)">required
+                </span>
+        </div>
+      </div>
+      <div formArrayName="hobbies">
+          <h3>hobbies List </h3>
+          <button type="button"
+          class="btn btn-success"
+          (click)="addHobby()"
+          style="margin-bottom: 10px;"
+          >Add Hobby</button>
+          <div class="form-group"
+          *ngFor = "let hobby of signupForm.get('hobbies')?.controls; let i =index"
+          >
+           <input type="text" class="form-control" [formControlName]="i">   
+          </div>
+      </div>
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger" style="margin-left: 10px;"
+         (click)="onClear()">Cancel</button>
+    </form>
+    </div>
+  </div>
+<div>
