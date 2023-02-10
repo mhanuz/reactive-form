@@ -118,12 +118,15 @@ export class AppComponent implements OnInit{
     if (this.signupForm.valid) {
       console.log(this.signupForm.value);
     }
+
     if (this.primaryAddressCheckBoxValue) {
       this.primaryAddressCheckBoxValue=false
     }
+
     if (this.secondaryAddressCheckBoxValue) {
       this.secondaryAddressCheckBoxValue=false
     }
+    
     this.signupForm.reset();
   }
 
