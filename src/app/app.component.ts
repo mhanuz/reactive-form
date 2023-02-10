@@ -85,8 +85,7 @@ export class AppComponent implements OnInit{
 
   copyBasicInfoIntoPrimaryAddress(){
     this.primaryAddressCheckBoxValue=!this.primaryAddressCheckBoxValue
-    console.log(this.primaryAddressCheckBoxValue);
-    
+
     if(this.primaryAddressCheckBoxValue){
       this.signupForm.controls.primaryAddress.controls.email.setValue(this.signupForm.controls.basicInfo.controls.email.value);
       this.signupForm.controls.primaryAddress.controls.phone.setValue(this.signupForm.controls.basicInfo.controls.phone.value);
@@ -105,6 +104,13 @@ export class AppComponent implements OnInit{
       this.signupForm.controls.secondaryAddress.controls.city.setValue(this.signupForm.controls.primaryAddress.controls.city.value)
       this.signupForm.controls.secondaryAddress.controls.country.setValue(this.signupForm.controls.primaryAddress.controls.country.value)
       this.signupForm.controls.secondaryAddress.controls.postcode.setValue(this.signupForm.controls.primaryAddress.controls.postcode.value)
+    }else{
+        this.signupForm.controls.secondaryAddress.controls.email.setValue("")
+        this.signupForm.controls.secondaryAddress.controls.phone.setValue(null)
+        this.signupForm.controls.secondaryAddress.controls.address.setValue("")
+        this.signupForm.controls.secondaryAddress.controls.city.setValue("")
+        this.signupForm.controls.secondaryAddress.controls.country.setValue("")
+        this.signupForm.controls.secondaryAddress.controls.postcode.setValue(null)
     }
   }
 
