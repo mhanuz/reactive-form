@@ -84,7 +84,7 @@ export class AppComponent implements OnInit{
   }
 
   copyBasicInfoIntoPrimaryAddress() {
-    this.primaryAddressCheckBoxValue=!this.primaryAddressCheckBoxValue
+    this.primaryAddressCheckBoxValue=!this.primaryAddressCheckBoxValue;
 
     if (this.primaryAddressCheckBoxValue) {
       this.signupForm.controls.primaryAddress.controls.email.setValue(this.signupForm.controls.basicInfo.controls.email.value);
@@ -98,19 +98,19 @@ export class AppComponent implements OnInit{
   copyPrimaryAddessIntoSecondaryAddress() {
     this.secondaryAddressCheckBoxValue=!this.secondaryAddressCheckBoxValue
     if (this.secondaryAddressCheckBoxValue) {
-      this.signupForm.controls.secondaryAddress.controls.email.setValue(this.signupForm.controls.primaryAddress.controls.email.value)
-      this.signupForm.controls.secondaryAddress.controls.phone.setValue(this.signupForm.controls.primaryAddress.controls.phone.value)
-      this.signupForm.controls.secondaryAddress.controls.address.setValue(this.signupForm.controls.primaryAddress.controls.address.value)
-      this.signupForm.controls.secondaryAddress.controls.city.setValue(this.signupForm.controls.primaryAddress.controls.city.value)
-      this.signupForm.controls.secondaryAddress.controls.country.setValue(this.signupForm.controls.primaryAddress.controls.country.value)
-      this.signupForm.controls.secondaryAddress.controls.postcode.setValue(this.signupForm.controls.primaryAddress.controls.postcode.value)
+      this.signupForm.controls.secondaryAddress.controls.email.setValue(this.signupForm.controls.primaryAddress.controls.email.value);
+      this.signupForm.controls.secondaryAddress.controls.phone.setValue(this.signupForm.controls.primaryAddress.controls.phone.value);
+      this.signupForm.controls.secondaryAddress.controls.address.setValue(this.signupForm.controls.primaryAddress.controls.address.value);
+      this.signupForm.controls.secondaryAddress.controls.city.setValue(this.signupForm.controls.primaryAddress.controls.city.value);
+      this.signupForm.controls.secondaryAddress.controls.country.setValue(this.signupForm.controls.primaryAddress.controls.country.value);
+      this.signupForm.controls.secondaryAddress.controls.postcode.setValue(this.signupForm.controls.primaryAddress.controls.postcode.value);
     } else {
-        this.signupForm.controls.secondaryAddress.controls.email.setValue("")
-        this.signupForm.controls.secondaryAddress.controls.phone.setValue(null)
-        this.signupForm.controls.secondaryAddress.controls.address.setValue("")
-        this.signupForm.controls.secondaryAddress.controls.city.setValue("")
-        this.signupForm.controls.secondaryAddress.controls.country.setValue("")
-        this.signupForm.controls.secondaryAddress.controls.postcode.setValue(null)
+        this.signupForm.controls.secondaryAddress.controls.email.setValue("");
+        this.signupForm.controls.secondaryAddress.controls.phone.setValue(null);
+        this.signupForm.controls.secondaryAddress.controls.address.setValue("");
+        this.signupForm.controls.secondaryAddress.controls.city.setValue("");
+        this.signupForm.controls.secondaryAddress.controls.country.setValue("");
+        this.signupForm.controls.secondaryAddress.controls.postcode.setValue(null);
     }
   }
 
