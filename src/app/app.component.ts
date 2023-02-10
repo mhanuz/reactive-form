@@ -83,28 +83,28 @@ export class AppComponent implements OnInit{
     })
   }
 
-  copyBasicInfoIntoPrimaryAddress(){
+  copyBasicInfoIntoPrimaryAddress() {
     this.primaryAddressCheckBoxValue=!this.primaryAddressCheckBoxValue
 
-    if(this.primaryAddressCheckBoxValue){
+    if (this.primaryAddressCheckBoxValue) {
       this.signupForm.controls.primaryAddress.controls.email.setValue(this.signupForm.controls.basicInfo.controls.email.value);
       this.signupForm.controls.primaryAddress.controls.phone.setValue(this.signupForm.controls.basicInfo.controls.phone.value);
-    }else{
+    } else {
       this.signupForm.controls.primaryAddress.controls.email.setValue("");
       this.signupForm.controls.primaryAddress.controls.phone.setValue(null);
     }
   }
 
-  copyPrimaryAddessIntoSecondaryAddress(){
+  copyPrimaryAddessIntoSecondaryAddress() {
     this.secondaryAddressCheckBoxValue=!this.secondaryAddressCheckBoxValue
-    if(this.secondaryAddressCheckBoxValue){
+    if (this.secondaryAddressCheckBoxValue) {
       this.signupForm.controls.secondaryAddress.controls.email.setValue(this.signupForm.controls.primaryAddress.controls.email.value)
       this.signupForm.controls.secondaryAddress.controls.phone.setValue(this.signupForm.controls.primaryAddress.controls.phone.value)
       this.signupForm.controls.secondaryAddress.controls.address.setValue(this.signupForm.controls.primaryAddress.controls.address.value)
       this.signupForm.controls.secondaryAddress.controls.city.setValue(this.signupForm.controls.primaryAddress.controls.city.value)
       this.signupForm.controls.secondaryAddress.controls.country.setValue(this.signupForm.controls.primaryAddress.controls.country.value)
       this.signupForm.controls.secondaryAddress.controls.postcode.setValue(this.signupForm.controls.primaryAddress.controls.postcode.value)
-    }else{
+    } else {
         this.signupForm.controls.secondaryAddress.controls.email.setValue("")
         this.signupForm.controls.secondaryAddress.controls.phone.setValue(null)
         this.signupForm.controls.secondaryAddress.controls.address.setValue("")
@@ -115,13 +115,13 @@ export class AppComponent implements OnInit{
   }
 
   onSubmit(){
-    if(this.signupForm.valid){
+    if (this.signupForm.valid) {
       console.log(this.signupForm.value);
     }
-    if(this.primaryAddressCheckBoxValue){
+    if (this.primaryAddressCheckBoxValue) {
       this.primaryAddressCheckBoxValue=false
     }
-    if(this.secondaryAddressCheckBoxValue){
+    if (this.secondaryAddressCheckBoxValue) {
       this.secondaryAddressCheckBoxValue=false
     }
     this.signupForm.reset();
